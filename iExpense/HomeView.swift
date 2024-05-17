@@ -18,7 +18,7 @@ struct HomeView: View {
                 ExpenseSection(title: "Personal Expenses", expenses: expenses.personalItems, deleteItems: removePersonalItems)
                 ExpenseSection(title: "Business Expenses", expenses: expenses.businessItems, deleteItems: removeBusinessItems)
             }
-            .navigationTitle("Expenses")
+            .navigationTitle("My Expenses")
             .toolbar {
                 Button ("Add Item", systemImage: "plus") {
                     isShowingAddExpenseView = true

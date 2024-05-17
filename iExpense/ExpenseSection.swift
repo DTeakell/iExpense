@@ -17,22 +17,26 @@ struct ExpenseSection: View {
     var body: some View {
         Section ("\(title)"){
             ForEach(expenses) { item in
-                HStack {
-                    VStack (alignment: .leading) {
-                        Text("\(item.name)")
-                            .font(.headline)
+                NavigationLink {
+                    ExpenseDetailView()
+                } label: {
+                    HStack {
+                        VStack (alignment: .leading) {
+                            Text("\(item.name)")
+                                .font(.headline)
+                            
+                            
+                            Text("\(item.type)")
+                                .font(.caption)
+                                .foregroundStyle(.gray)
+                        }
                         
+                        Spacer()
                         
-                        Text("\(item.type)")
-                            .font(.caption)
-                            .foregroundStyle(.gray)
+                        Text("\(item.price.formatted(.currency(code: currencyCode)))")
+                            .font(.subheadline)
+                            .fontWeight(.medium)
                     }
-                    
-                    Spacer()
-                    
-                    Text("\(item.price.formatted(.currency(code: currencyCode)))")
-                        .font(.subheadline)
-                        .fontWeight(.medium)
                 }
             }
             .onDelete(perform: deleteItems)
